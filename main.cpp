@@ -1,5 +1,12 @@
-#include <stdio.h>
+
+#include <bits/stdc++.h>
+using namespace std;
+#include <vector>
+
+
 #include "score.h"
+
+
 
 
 int main(){

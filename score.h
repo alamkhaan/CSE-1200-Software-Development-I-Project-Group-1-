@@ -15,7 +15,9 @@ struct Score {
 
 
 int sizeOfStructure = getSize();
-Score structures[20];
+//Score structures[20];
+
+vector<Score> structures;
 
 
 void readScores(){
@@ -26,10 +28,9 @@ void readScores(){
 
         int i = 0;
         while( fread(&s,sizeof(s),1,fp) == 1){
-            structures[i] = s;
+            structures.push_back(s);
             i++;
         }
-
 
         fclose(fp);
         sortStructure();
@@ -46,7 +47,6 @@ int getSize(){
         while( fread(&s,sizeof(s),1,fp) == 1){
             i++;
         }
-
         fclose(fp);
         return i;
 }
@@ -107,8 +107,6 @@ void writeScore(){
 
             printf("Enter Player Name: ");
             gets(s.playerName);
-
-
 
             printf("Enter Player Rank: ");
             scanf("%d",&s.playerRank);
