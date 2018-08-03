@@ -17,7 +17,6 @@ struct Score {
 
 int sizeOfStructure = getSize();
 //Score structures[20];
-
 vector<Score> structures;
 
 

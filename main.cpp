@@ -1,6 +1,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+#include <string.h>
 #include <vector>
 
 
@@ -11,8 +12,9 @@ using namespace std;
 
 int main(){
 
-    writeScoreInFile("Maruf", 15, 32423);
-    printf("%d", getSize());
+
+    //writeScoreInFile("Moja", 234, 13);
+    //printf("%d", getSize());
     //writeScore();
     displayScoresInConsole();
 
