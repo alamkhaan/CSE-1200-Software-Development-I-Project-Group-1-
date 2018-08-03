@@ -11,8 +11,8 @@ using namespace std;
 
 int main(){
 
-
-    //printf("%d", getSize());
+    writeScoreInFile("Maruf", 15, 32423);
+    printf("%d", getSize());
     //writeScore();
     displayScoresInConsole();
 
