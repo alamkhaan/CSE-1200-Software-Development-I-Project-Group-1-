@@ -8,7 +8,7 @@ int screen_width = 700;
 
 //store the value of cover page/game state
 
-int coverImage = 0;		
+int coverImage = 16;		
 
 
 //Store the different types of picture
@@ -47,10 +47,12 @@ int pointTableRender = 0;
 
 int gk_timer;
 int loadingTimer;
-int gk_dive_timer_own;
+int gk_dive_timer;
 int player_timer;
+int victory_timer;
 int ball_timer;
-
+int power_timer1;
+int power_timer2;
 
 //Store the co-ordinates of stadium
 
@@ -83,13 +85,26 @@ bool blink_quit = false;
 
 
 bool world_cup_team_selection = false;
-bool player_mode=false;
 bool quitButton = false;
+bool redPower = false;
+bool teamType = false;
+bool keyType = false;
+bool playerVictory = false;
+
+bool single_mode = false;
+bool multiPlayer_mode = false;
+bool challenge_mode = false;
+bool worldCup_mode = false;
+
 
 
 bool ballRun = false;
 bool playerRun = false;
 bool gkRun = true;
+bool powerRun1 = false;
+bool powerRun2 = false;
+
+
 
 //All own team player pictures are stored in the array ownTeamPlayer [21]..
 
@@ -100,6 +115,24 @@ char* own_team_player [21] = { "images//OwnPlayer//1.png" , "images//OwnPlayer//
 								"images//OwnPlayer//13.png" , "images//OwnPlayer//14.png" , "images//OwnPlayer//15.png" , "images//OwnPlayer//16.png" ,
 								"images//OwnPlayer//17.png" , "images//OwnPlayer//18.png" , "images//OwnPlayer//19.png" ,"images//OwnPlayer//20.png","images//OwnPlayer//21.png" }; 
 
+int opponentTeamPlayer [18]; 
+
+char* opponent_team_player [18] = { "images//OpponentPlayer//8.png" , "images//OpponentPlayer//9.png" , "images//OpponentPlayer//10.png" , "images//OpponentPlayer//11.png" , "images//OpponentPlayer//12.png" , 
+									"images//OpponentPlayer//13.png" , "images//OpponentPlayer//14.png" , "images//OpponentPlayer//15.png" , "images//OpponentPlayer//16.png" , "images//OpponentPlayer//17.png" , 
+									"images//OpponentPlayer//18.png" , "images//OpponentPlayer//19.png" , "images//OpponentPlayer//20.png" , "images//OpponentPlayer//21.png" , "images//OpponentPlayer//22.png" , 
+									"images//OpponentPlayer//23.png" , "images//OpponentPlayer//24.png" , "images//OpponentPlayer//25.png" };
+
+
+int ownVictory [11];
+char* own_victory [11] = { "images//OwnVictory//1.png" , "images//OwnVictory//2.png" , "images//OwnVictory//3.png" , "images//OwnVictory//4.png" , "images//OwnVictory//5.png" , "images//OwnVictory//6.png" ,
+							"images//OwnVictory//7.png" , "images//OwnVictory//8.png" , "images//OwnVictory//9.png" , "images//OwnVictory//10.png" , "images//OwnVictory//11.png" };
+
+
+int opponentVictory [9];
+char* opponent_victory [9] = { "images//OpponentVictory//1.png" , "images//OpponentVictory//2.png" , "images//OpponentVictory//3.png" , "images//OpponentVictory//4.png" , "images//OpponentVictory//5.png" ,
+	"images//OpponentVictory//6.png" , "images//OpponentVictory//7.png" , "images//OpponentVictory//8.png" , "images//OpponentVictory//9.png" };
+
+
 
  //All the cover photos are stored in the array cover[20].
 
@@ -108,7 +141,7 @@ int coverPage [18];
 char* cover[18] = { "images//cover//coverPage1.jpg" , "images//cover//coverPage2.png" , "images//cover//coverPage3.png" , "images//cover//coverPage4.jpg",  "images//cover//coverPage5.jpg" ,"images//cover//coverPage6.png"  ,
 					"images//cover//coverPage7.png" ,"images//cover//coverPage8.png" , "images//cover//coverPage9.png" , "images//cover//coverPage10.png" ,"images//cover//coverPage11.png","images//cover//coverPage12.jpg",
 					"images//cover//coverPage13.png","images//cover//coverPage14.jpg","images//cover//coverPage15.jpg","images//cover//coverPage16.jpg","images//cover//coverPage17.jpg","images//cover//coverPage18.jpg" };
-
+					
 
 //All Gk standing Pictues are stored in the ownGk[4].
 
@@ -124,26 +157,66 @@ int ownGkRight [6];
 char* own_gk_right [6] = {"images//OwnGkRight//5.png" , "images//OwnGkRight//6.png" , "images//OwnGkRight//7.png" , "images//OwnGkRight//8.png" ,"images//OwnGkRight//9.png" , "images//OwnGkRight//10.png"  };
 
 
-//All own gk left side diving pictures are stored in the array  ownGkLeft [9]..
 
-int ownGkLeft [9];
+int ownGkLeft [7];
 
-char* own_gk_left  [9] = {"images//OwnGkLeft//1.png" , "images//OwnGkLeft//2.png" ,"images//OwnGkLeft//3.png" ,"images//OwnGkLeft//4.png" ,"images//OwnGkLeft//5.png" ,"images//OwnGkLeft//6.png" , "images//OwnGkLeft//7.png" ,
-							"images//OwnGkLeft//8.png" ,"images//OwnGkLeft//9.png" };
+char* own_gk_left  [7] = {"images//OwnGkLeft//1.png" , "images//OwnGkLeft//2.png" ,"images//OwnGkLeft//3.png" ,"images//OwnGkLeft//4.png" ,"images//OwnGkLeft//5.png" ,"images//OwnGkLeft//6.png" , "images//OwnGkLeft//7.png" };
+
+
+int ownMidRight [7];	
+
+char* own_mid_right [7] = {"images//OwnMidRight//1.png" , "images//OwnMidRight//2.png" , "images//OwnMidRight//3.png" , "images//OwnMidRight//4.png" ,"images//OwnMidRight//5.png" , "images//OwnMidRight//6.png" , "images//OwnMidRight//7.png"  };
+
+
+int ownMidLeft [7];
+
+char* own_mid_left  [7] = {"images//OwnMidLeft//1.png" , "images//OwnMidLeft//2.png" ,"images//OwnGkLeft//3.png" ,"images//OwnMidLeft//4.png" ,"images//OwnMidLeft//5.png" ,"images//OwnMidLeft//6.png" , "images//OwnMidLeft//7.png"  };
+
+
+
+
+int opponentGk[6];	
+
+char* opponent_gk [6] = {"images//OpponentGk//1.png" , "images//OpponentGk//2.png" , "images//OpponentGk//3.png" , "images//OpponentGk//4.png" , "images//OpponentGk//3.png" , "images//OpponentGk//2.png" };
+
+
+
+int opponentGkRight [7];	
+
+char* opponent_gk_right [7] = {"images//OpponentGkRight//1.png" , "images//OpponentGkRight//2.png" , "images//OpponentGkRight//3.png" , "images//OpponentGkRight//4.png" ,"images//OpponentGkRight//5.png" , "images//OpponentGkRight//6.png"  , "images//OpponentGkRight//7.png" };
+
+
+
+int opponentGkLeft [7];
+
+char* opponent_gk_left  [7] = {"images//OpponentGkLeft//1.png" , "images//OpponentGkLeft//2.png" ,"images//OpponentGkLeft//3.png" ,"images//OpponentGkLeft//4.png" ,"images//OpponentGkLeft//5.png" ,"images//OpponentGkLeft//6.png" , "images//OpponentGkLeft//7.png" };
+
+
+int opponentMidRight [8];	
+
+char* opponent_mid_right [8] = {"images//OpponentMidRight//1.png" , "images//OpponentMidRight//2.png" , "images//OpponentMidRight//3.png" , "images//OpponentMidRight//4.png" ,"images//OpponentMidRight//5.png" , "images//OpponentMidRight//6.png"  ,"images//OpponentMidRight//7.png" , "images//OpponentMidRight//8.png"  };
+
+
+int opponentMidLeft [8];
+
+char* opponent_mid_left  [8] = {"images//OpponentMidLeft//1.png" , "images//OpponentMidLeft//2.png" ,"images//OpponentGkLeft//3.png" ,"images//OpponentMidLeft//4.png" ,"images//OpponentMidLeft//5.png" ,"images//OpponentMidLeft//6.png" , "images//OpponentMidLeft//7.png"  ,"images//OpponentMidLeft//8.png" };
+
+
+
 
 
 //All flag pictures are stored in the array flag [32]..
-
+/*
 int flag [32];
 
 char* flag_[32] = { "images//Flag//argentina.jpg" ,  "images//Flag//australia.jpg" ,  "images//Flag//belgium.jpg" ,  "images//Flag//brazil.jpg" ,  "images//Flag//colombia.jpg" , "images//Flag//costaRica.png" , "images//Flag//croatia.png" ,
 					"images//Flag//denmark.png" , "images//Flag//egypt.png" , "images//Flag//england.png" , "images//Flag//france.png" , "images//Flag//germany.png" , "images//Flag//iceland.png" , "images//Flag//iran.png" , "images//Flag//japan.png" , "images//Flag//mexico.png" ,
 					"images//Flag//morocco.png" , "images//Flag//nigeria.png" , "images//Flag//panama.png" , "images//Flag//peru.png" , "images//Flag//poland.png" , "images//Flag//portugal.jpg" , "images//Flag//russia.jpg" , "images//Flag//saudia.png" , "images//Flag//senegal.png" ,
 					"images//Flag//serbia.png" , "images//Flag//southKorea.jpg" , "images//Flag//spain.png" , "images//Flag//sweden.png" , "images//Flag//switzerland.jpg" , "images//Flag//tunisia.png" , "images//Flag//uruguay.png" };
-
+*/
 
 //All stadium pictures are stored in the array stadium[6]..
-
+/*
 int stadium[6];
 char* stadium_[6] = {"images//Stadium//A.jpg" ,  "images//Stadium//B.jpg" ,"images//Stadium//C.jpg" ,"images//Stadium//D.jpg" ,"images//Stadium//E.png" ,"images//Stadium//F.jpg" };
 
@@ -165,3 +238,6 @@ int worldCupGroup[8];
 char* world_cup_group [8] = { "images//PointTable//1.jpg" ,"images//PointTable//2.jpg" ,"images//PointTable//3.jpg" ,"images//PointTable//4.jpg" ,"images//PointTable//5.jpg" ,"images//PointTable//6.jpg" ,"images//PointTable//7.jpg" ,"images//PointTable//8.jpg" };
 
 
+*/
+
+int tempo;
