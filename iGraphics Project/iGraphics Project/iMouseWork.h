@@ -1118,6 +1118,7 @@ void makeIMouseSmall(int mx,int my)
 		}
 
 		resetValues();
+		glovesRun = false;
 		playSound = true;
 		playingSound();
 	}
