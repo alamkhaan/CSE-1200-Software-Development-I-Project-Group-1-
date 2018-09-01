@@ -65,7 +65,7 @@ void mainGame()
 {
 	if(!challenge_mode)
 	{
-		
+
 		circleFillup();
 		iSetColor(204,0,0);
 		iFilledRectangle(80,575,60,40);
@@ -80,15 +80,15 @@ void mainGame()
 
 		if(worldCup_mode)
 		{
-			iShowImage(10,575,70,40,flag[worldCupOwnTeam]);	
-			iShowImage(260,575,70,40,flag[worldCupOpponentTeam]);	
+			iShowImage(10,575,70,40,flag[worldCupOwnTeam]);
+			iShowImage(260,575,70,40,flag[worldCupOpponentTeam]);
 			iText(90,590,player[worldCupOwnTeam].shortName,GLUT_BITMAP_HELVETICA_18);
 			iText(210,590,player[worldCupOpponentTeam].shortName,GLUT_BITMAP_HELVETICA_18);
 		}
 		else
 		{
-			iShowImage(10,575,70,40,flag[yourTeamNumber]);	
-			iShowImage(260,575,70,40,flag[opponentTeamNumber]);	
+			iShowImage(10,575,70,40,flag[yourTeamNumber]);
+			iShowImage(260,575,70,40,flag[opponentTeamNumber]);
 			iText(90,590,player[yourTeamNumber].shortName,GLUT_BITMAP_HELVETICA_18);
 			iText(210,590,player[opponentTeamNumber].shortName,GLUT_BITMAP_HELVETICA_18);
 		}
@@ -106,25 +106,25 @@ void mainGame()
 
 
 	}
-	
-	
+
+
 	iSetColor(51,51,255);
 	iFilledRectangle(100,100,160,40);
 	iFilledRectangle(1135,300,160,40);
-	
+
 	iSetColor(255,255,255);
 	if(worldCup_mode)
 	{
 		if(teamType)
 		{
-			iShowImage(30,100,70,40,flag[worldCupOpponentTeam]);   
-			iShowImage(1065,300,70,40,flag[worldCupOwnTeam]);	
+			iShowImage(30,100,70,40,flag[worldCupOpponentTeam]);
+			iShowImage(1065,300,70,40,flag[worldCupOwnTeam]);
 			iText(1150,315,player[worldCupOwnTeam].PName[10],GLUT_BITMAP_HELVETICA_18);
 			iText(115,115,player[worldCupOpponentTeam].PName[playerNameRender],GLUT_BITMAP_HELVETICA_18);
 		}
 		else if(!teamType)
 		{
-			iShowImage(30,100,70,40,flag[worldCupOwnTeam]);   
+			iShowImage(30,100,70,40,flag[worldCupOwnTeam]);
 			iShowImage(1065,300,70,40,flag[worldCupOpponentTeam]);
 			iText(1150,315,player[worldCupOpponentTeam].PName[10],GLUT_BITMAP_HELVETICA_18);
 			iText(115,115,player[worldCupOwnTeam].PName[playerNameRender],GLUT_BITMAP_HELVETICA_18);
@@ -134,22 +134,22 @@ void mainGame()
 	{
 		if(teamType)
 		{
-			iShowImage(30,100,70,40,flag[opponentTeamNumber]);   
-			iShowImage(1065,300,70,40,flag[yourTeamNumber]);	
+			iShowImage(30,100,70,40,flag[opponentTeamNumber]);
+			iShowImage(1065,300,70,40,flag[yourTeamNumber]);
 			iText(1150,315,player[yourTeamNumber].PName[10],GLUT_BITMAP_HELVETICA_18);
 			iText(115,115,player[opponentTeamNumber].PName[playerNameRender],GLUT_BITMAP_HELVETICA_18);
 		}
-	
+
 		else if(!teamType)
 		{
-			iShowImage(30,100,70,40,flag[yourTeamNumber]);   
-			iShowImage(1065,300,70,40,flag[opponentTeamNumber]);	
+			iShowImage(30,100,70,40,flag[yourTeamNumber]);
+			iShowImage(1065,300,70,40,flag[opponentTeamNumber]);
 			iText(1150,315,player[opponentTeamNumber].PName[10],GLUT_BITMAP_HELVETICA_18);
 			iText(115,115,player[yourTeamNumber].PName[playerNameRender],GLUT_BITMAP_HELVETICA_18);
 		}
 	}
 
-	
+
 	if(teamType)
 	{
 		if(gkRun)
@@ -175,7 +175,7 @@ void mainGame()
 		iSetColor(255,0,0);
 		iFilledRectangle(1170,130,50,powerRectangle1);
 	}
-		
+
 
 
 	if(redPower  && !glovesRun)
@@ -184,16 +184,16 @@ void mainGame()
 		iFilledRectangle(powerRectangle2,346,15,10);
 
 	}
-	
+
 	ballRunning();
-	
+
 	if(challenge_mode)
 	{
 		iShowImage(500,30,100,100,digitPicture[clockRender1]);
 		iShowImage(650,30,100,100,digitPicture[clockRender2]);
 
 	}
-	
+
 	if((worldCup_mode || single_mode)  && teamType  && glovesShow)
 	{
 		iShowImage(glovesPositionX[glovesRender],glovesPositionY[glovesRender],70,60,gloves_picture);
@@ -207,7 +207,7 @@ void mainGame()
 
 void gkDive()
 {
-	
+
 	if(gk_dive == 1 && gkRun==false)
 	{
 		if(teamType)
@@ -231,10 +231,10 @@ void gkDive()
 			iShowImage(0,0,screen_length,screen_width,ownGkLeft[gkMoveRender]);
 		}
 	}
-	
+
 	else if((gk_dive == 3 ||  gk_dive == 5) && gkRun==false)
 	{
-		
+
 		if(teamType)
 		{
 			iShowImage(0,0,screen_length,screen_width,opponentMidLeft[gkMoveRender]);
@@ -244,10 +244,10 @@ void gkDive()
 			iShowImage(0,0,screen_length,screen_width,ownMidLeft[gkMoveRender]);
 		}
 	}
-	
+
 	else if((gk_dive == 4 ||  gk_dive == 6) && gkRun==false)
 	{
-		
+
 		if(teamType)
 		{
 			iShowImage(0,0,screen_length,screen_width,opponentMidRight[gkMoveRender]);
@@ -307,7 +307,7 @@ void gkRunning()
 		if(gkMoveRender == 6)
 		{
 			iPauseTimer(gk_dive_timer);
-		
+
 		}
 		else gkMoveRender++;
 	}
@@ -317,7 +317,7 @@ void gkRunning()
 		if(gkMoveRender == 7)
 		{
 			iPauseTimer(gk_dive_timer);
-		
+
 		}
 
 		else if(gkMoveRender == 2 && (gk_dive == 3 || gk_dive == 4))
@@ -343,7 +343,7 @@ void gkRunning()
 		if(gkMoveRender == 4)
 		{
 			iPauseTimer(gk_dive_timer);
-		
+
 		}
 		else gkMoveRender++;
 	}
@@ -353,7 +353,7 @@ void gkRunning()
 		if(gkMoveRender == 5)
 		{
 			iPauseTimer(gk_dive_timer);
-		
+
 		}
 		else gkMoveRender++;
 	}
@@ -363,7 +363,7 @@ void gkRunning()
 		if(gkMoveRender == 6)
 		{
 			iPauseTimer(gk_dive_timer);
-		
+
 		}
 
 		else if(gkMoveRender == 2 && (gk_dive == 3 || gk_dive == 4))
@@ -494,7 +494,7 @@ void ballTimer()
 			else goalCount(3);
 		}
 
-		else 
+		else
 		{
 			//iText(700,50,"G O A L",GLUT_BITMAP_TIMES_ROMAN_24);
 			ballGo = 5;
@@ -502,10 +502,10 @@ void ballTimer()
 			goalCount(1);
 		}
 	}
-	
+
 	else if(ballRun)
 	{
-		
+
 		ballMoveX+= calculateBallMoveX;
 		ballMoveY+= calculateBallMoveY;
 
@@ -704,7 +704,7 @@ void ballMove(int setBallY,int setBallX)
 		pauseBall = 600;
 		calculateBallMoveY = (600-168)/10;
 	}
-	
+
 	calculateBallMoveX = (setBallX-673)/10;
 }
 
@@ -743,7 +743,7 @@ void victoryRunning()
 	}
 	else if(!teamType  && playerVictory)
 	{
-		
+
 		if(victoryRender==10)
 		{
 			ballGo = 6;
@@ -812,7 +812,7 @@ void resetValues()
 			glovesShow = true;
 		}
 
-		
+
 
 		ballShadowSizeX = 40;
 		ballShadowSizeY = 15;
@@ -964,13 +964,13 @@ void circleFillup()
 		int point2 = 300;
 		for(int i = 0 ; i != 10 ; i++)
 		{
-			
+
 			if(i%2==0)
 			{
 				iShowImage(point1,547,16,16,circleArray[i][circleIndex[i]]);
 				point1 += 30;
 			}
-			else 
+			else
 			{
 				iShowImage(point2,547,16,16,circleArray[i][circleIndex[i]]);
 				point2 -= 30;
@@ -1011,7 +1011,7 @@ void circleDraw(int checkGoal)
 		circleIndex[ownTotalShootNo+opponentTotalShootNo] = 1;
 
 	circleFillup();
-	
+
 }
 
 
@@ -1022,7 +1022,7 @@ void circleDraw(int checkGoal)
 void storeDefaultData()
 {
 	coverImage = 2;
-	
+
 	if(challenge_mode)
 	{
 		writeChallengeFile(userDataChallenge.userName,userDataChallenge.userScore);
@@ -1044,6 +1044,7 @@ void storeDefaultData()
 	opponentTeamNumber = 0;
 	playerNameRender = 0;
 	teamType = false;
+	glovesRun = false;
 
 
 	for(int i = 0;i<11;i++)
