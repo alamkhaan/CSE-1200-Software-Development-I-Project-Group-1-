@@ -766,7 +766,7 @@ void trophyWc()
 	iShowImage(740,530,210,50,blueName);
 
 	char tempString[100];
-	sprintf(tempString,"%d",wcTotalOwnGoal);
+	sprintf(tempString,"%d",wcTotalOwnGoal+ownGoalCount);
 	iText(825,545,tempString,GLUT_BITMAP_TIMES_ROMAN_24);
 	iText(765,465,userGlory.userName,GLUT_BITMAP_TIMES_ROMAN_24);
 
