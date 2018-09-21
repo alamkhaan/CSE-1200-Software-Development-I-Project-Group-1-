@@ -841,7 +841,7 @@ void resetValues()
 			}
 		}
 
-		else if((((5-ownTotalShootNo) < (opponentGoalCount-ownGoalCount)) || ((5-opponentTotalShootNo) < (ownGoalCount-opponentGoalCount)))  && (single_mode || multiPlayer_mode || worldCup_mode))
+		else if((((5-ownTotalShootNo) < (opponentGoalCount-ownGoalCount)) || ((5-opponentTotalShootNo) < (ownGoalCount-opponentGoalCount)))  && (single_mode || multiPlayer_mode || worldCup_mode) && !doOrDie )
 		{
 			coverImage = 17;
 			playSound = true;
